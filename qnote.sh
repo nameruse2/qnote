@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # set current date and time
 dt=$(date '+%F %R')
 
 # set file location
-fileloc="/data/data/com.termux/files/home/notes/qnote.txt"
+fileloc="$HOME/Documents/notes/qnote.txt"
 
 text="$dt $@\n"
 
