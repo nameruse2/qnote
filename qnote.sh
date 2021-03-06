@@ -6,7 +6,7 @@ dt=$(date '+%F %R')
 # set file location
 fileloc="/data/data/com.termux/files/home/notes/qnote.txt"
 
-text="$dt $@"
+text="$dt $@\n"
 
 sed -i "1s/^/$text\n/" $fileloc
 
