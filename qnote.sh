@@ -4,7 +4,7 @@
 dt=$(date '+%F %R')
 
 # set file location
-fileloc="$HOME/Documents/notes/qnote.txt"
+fileloc="$HOME/notes/qnote.txt"
 
 text="$dt $@\n"
 
