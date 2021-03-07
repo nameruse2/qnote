@@ -20,3 +20,8 @@ elif [[ $lflag == "yes" ]]
 then
     cat $fileloc
 fi
+
+
+## move @someday tasks to someday file
+#grep @someday todo.txt >> someday.todo.txt
+#sed -i '/@someday/d' todo.txt
