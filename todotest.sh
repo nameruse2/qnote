@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 # set current date and time
 dt=$(date '+%F')
@@ -6,38 +6,32 @@ dt=$(date '+%F')
 # set file location
 fileloc="$HOME/notes/todo.txt"
 
-
-
-while getopts :a:s:lp thearg
-do
-    case $thearg in
-        a) aflag="yes"; aarg+=("$OPTARG");;
-        l) lflag="yes";;
-        p) pflag="yes";;
-        d) fileloc="$HOME/notes/done.todo.txt";;
-    esac
-done
-shift $((OPTIND-1))
-
-# add a task with -a flag
-if [[ $aflag == "yes" ]]
-then 
-    #echo "${aarg[@]}"
+function add ()
+{
     text="$dt $@"
     echo $text >> $fileloc
-# Print list
-elif [[ $lflag == "yes" ]]
-then
-    cat -n $fileloc
-elif [[ $pflag == "yes" ]]
-then
+    return 0
+}
+
+function list ()
+{
+   cat -n $fileloc
+   return 0
+}
+
+function projects ()
+{
     projects=( $(rg -o "\+\w+" $fileloc | sort | uniq) )
     for i in "${projects[@]}"; do
         procount=$(rg -v '^x' $fileloc | rg -cF $i)
         toprint="$i $procount"
         echo $toprint
     done
-fi
+    return 0
+}
+
+"$@"
+
 
 
 ## move @someday tasks to someday file
